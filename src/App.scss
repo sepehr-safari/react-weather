@@ -1,0 +1,97 @@
+@import '~bootstrap/scss/bootstrap';
+
+:root {
+  --bs-body-font-size: calc(1.2rem + 0.1vw);
+  --bs-body-line-height: 1.25;
+  --bs-body-color: var(--bs-white);
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  max-width: -webkit-fill-available;
+}
+
+.summary {
+  text-shadow: 0 0 8px rgb(0 0 0 / 80%);
+
+  .place-holder {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .temp {
+    $size: calc(8rem + 0.8vw);
+
+    font-size: $size;
+    font-weight: 600;
+
+    .place-holder {
+      width: $size;
+      height: $size;
+    }
+  }
+
+  .city {
+    $size: calc(1.6rem + 1vw);
+
+    font-size: $size;
+    font-weight: 600;
+
+    .place-holder {
+      width: 10rem;
+      height: 2rem;
+    }
+  }
+
+  .icon {
+    .place-holder {
+      width: 4rem;
+      height: 2rem;
+    }
+  }
+
+  .date {
+    .place-holder {
+      width: 12rem;
+      height: 2rem;
+    }
+  }
+
+  .cond {
+    .place-holder {
+      width: 4rem;
+      height: 2rem;
+    }
+  }
+}
+
+.black-box {
+  backdrop-filter: blur(0.5rem);
+  background-color: rgba(0 0 0 / 0.2);
+  padding: 3.2rem;
+}
+
+.details {
+  line-height: 5.4rem;
+  opacity: 0.8;
+
+  .col-6:nth-child(even) {
+    text-align: end;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .p-lg-6 {
+    padding: 5.6rem !important;
+  }
+}

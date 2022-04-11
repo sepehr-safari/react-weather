@@ -16,6 +16,7 @@ import Summary from './components/Summary';
 //Helpers
 import { UNSPLASH_SOURCE_URL } from './helpers/constants';
 import fetchWeatherData from './helpers/fetchWeatherData';
+import getRelatedImage from './helpers/getRelatedImage';
 
 const App = () => {
   //Initialize States
@@ -32,6 +33,18 @@ const App = () => {
 
       if (fetchedWeatherData && fetchedWeatherData.cod === 200) {
         setWeatherData(fetchedWeatherData);
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const getRelatedImageAndSetImageState = async (description) => {
+    try {
+      const response = await getRelatedImage(description);
+
+      if (response) {
+        setRelativeImage(response);
       }
     } catch (error) {
       alert(error);
@@ -56,11 +69,11 @@ const App = () => {
 
       const weatherDescription = weatherData.weather[0].main.replace(' ', ',');
 
-      const backgroundImage = new Image();
-      backgroundImage.onload = () => {
-        setRelativeImage(backgroundImage.src);
-      };
-      backgroundImage.src = UNSPLASH_SOURCE_URL + weatherDescription;
+      // const backgroundImage = new Image();
+      // backgroundImage.src = UNSPLASH_SOURCE_URL + weatherDescription;
+      // backgroundImage.onload = (backgroundImage) => {
+      getRelatedImageAndSetImageState(weatherDescription);
+      // };
 
       setLng(weatherData.coord.lon);
       setLat(weatherData.coord.lat);
